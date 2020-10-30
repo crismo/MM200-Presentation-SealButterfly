@@ -1,7 +1,7 @@
 {
   "name": "PresentationToolSB",
   "version": "1.0.0",
-  "description": "",
+  "description": "Main repo for all project files.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,6 +11,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express.js": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuxFortis/MM200-Presentation-SealButterfly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DuxFortis/MM200-Presentation-SealButterfly/issues"
+  },
+  "homepage": "https://github.com/DuxFortis/MM200-Presentation-SealButterfly#readme"
 }
