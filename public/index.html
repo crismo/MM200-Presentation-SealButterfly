@@ -59,11 +59,12 @@
     const createUsername = document.getElementById("createUsername").value;
     const createPassword = document.getElementById("createPsw").value;
     const createPasswordConf = document.getElementById("createPswConf").value;
-    
-    let body = {
+
+    if(createPassword === createPasswordConf){
+
+        let body = {
                 username: createUsername,
-                password: createPassword,
-                passwordConf: createPasswordConf
+                password: createPassword
             }
             let config = {
                 method: "POST",
@@ -77,7 +78,12 @@
                 console.log(resp.status);
             })
 
+        }else{
+            console.log("Passwords don't match!");
+        }
     });
+    
+    
     //
     
     
