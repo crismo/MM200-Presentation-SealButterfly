@@ -10,13 +10,14 @@ class User {
             .update(password)
             .digest("hex");
         //kryptere passord
-        console.log(this.password);
+        //console.log(this.password);
     }
 
     async create() {
         try{
-            let response = this.username + ":" + this.password;
-            console.log(response);
+            //let response = this.username + ":" + this.password;
+            await database.insertUser(this.username, this.password);
+            //console.log(response);
         }catch(err){
             console.log(err);
         }
