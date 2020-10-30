@@ -31,8 +31,8 @@
         <label for="createPsw">Password: </label>
         <input name="psw" id="createPsw" type="password" value="aaa" />
 
-        <label for="createPsw">Confirm Password: </label>
-        <input name="psw" id="createPsw" type="password" value="aaa" />
+        <label for="createPswConf">Confirm Password: </label>
+        <input name="psw" id="createPswConf" type="password" value="aaa" />
 
         <input type="submit" value="Create Account">
 
@@ -58,10 +58,12 @@
 
     const createUsername = document.getElementById("createUsername").value;
     const createPassword = document.getElementById("createPsw").value;
+    const createPasswordConf = document.getElementById("createPswConf").value;
     
     let body = {
                 username: createUsername,
-                password: createPassword
+                password: createPassword,
+                passwordConf: createPasswordConf
             }
             let config = {
                 method: "POST",
