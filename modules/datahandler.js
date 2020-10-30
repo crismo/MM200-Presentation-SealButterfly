@@ -17,17 +17,26 @@ class StorageHandler {
         let results = null;
         try {
             await client.connect();
+            results = await client.query('SELECT username from "users" where username=$1', [username]);
+            
+            const nameCheck = results.rows.find(element => element = username);
+            
+            if(nameCheck !== undefined){
+                results = "User already exists";
+                return;
+            }else{
             results = await client.query('INSERT INTO "public"."users"("username", "password") VALUES($1, $2) RETURNING *;', [username, password]);
-            results = results.rows[0].id;
-            console.log(results);
-            client.end();
+            results = results.rows[0];
+            //console.log(results);
+            return;
+            }
+            
         }catch(err){
-            client.end();
             results = err;
             console.log(err);
         }
 
-        return results;
+        return;
     }
 
 }

@@ -21,7 +21,6 @@ server.post("/user", async function (req, res){
   await newUser.create();
   res.status(200).json(newUser).end();
   //console.log(req.body.username + ":" + req.body.password);
-
 });
 
 server.listen(server.get("port"), function () {

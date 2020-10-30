@@ -15,9 +15,8 @@ class User {
 
     async create() {
         try{
-            //let response = this.username + ":" + this.password;
             let resp = await database.insertUser(this.username, this.password);
-            //console.log(resp);
+            return resp;
         }catch(err){
             console.log(err);
         }
