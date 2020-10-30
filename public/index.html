@@ -7,17 +7,69 @@
 </head>
 <body>
 
-    <form id="userform">
-        <label for="inpUsername">Username:  </label>
-        <input name="email" id="inpUsername" type="text" placeholder="username" value="" />
+    <h1>Login</h1>
+    
+    <form id="theform">
+        <label for="inpEmail">Email: </label>
+        <input name="email" id="inpEmail" type="email" value="test@test.no" />
 
         <label for="inpPsw">Password: </label>
-        <input name="psw" id="inpPsw" type="password" placeholder="Password" value="" />
+        <input name="psw" id="inpPsw" type="password" value="aaa" />
 
-        <input type="submit" value="Create account">
+        <input type="submit" value="Login">
+
+     
     </form>
+
+    <br>
+
+    <button type ="button" id ="btn">Create account</button>
     
 </body>
+
+<style>
+
+
+    
+    *{
+        font-size: 20px;
+        font-family: sans-serif;
+    }
+
+    h1{
+        font-size:24px;
+    }
+  
+    form {
+            display: grid;
+
+        }
+
+    input {
+    margin-bottom: 10px;
+    height: 30px;
+    padding: 3px;
+    }
+
+    body{
+        background-color:rgb(168, 243, 197);
+    }
+
+    button {
+        display: grid;
+        position: absolute;
+        top: 35%;
+      left: 50%;
+      transform: translate(-35%, -50%);
+        width: 200px;
+        height: 30px;
+    }
+
+   
+
+        
+    
+    </style>
 
 <script>    
 
