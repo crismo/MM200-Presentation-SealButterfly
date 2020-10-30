@@ -1,0 +1,33 @@
+*{
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+h1{
+    font-size:24px;
+}
+
+form {
+        display: grid;
+
+    }
+
+input {
+margin-bottom: 10px;
+height: 30px;
+padding: 3px;
+}
+
+body{
+    background-color:rgb(168, 243, 197);
+}
+
+button {
+    display: grid;
+    position: absolute;
+    top: 35%;
+  left: 50%;
+  transform: translate(-35%, -50%);
+    width: 200px;
+    height: 30px;
+}
