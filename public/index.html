@@ -11,8 +11,8 @@
     <h1>Login</h1>
     
     <form id="theform">
-        <label for="inpEmail">Email: </label>
-        <input name="email" id="inpEmail" type="email" value="test@test.no" />
+        <label for="inpUsername">Username: </label>
+        <input name="Username" id="inpUsername" type="text" value="test" />
 
         <label for="inpPsw">Password: </label>
         <input name="psw" id="inpPsw" type="password" value="aaa" />
@@ -36,7 +36,7 @@
 
 
     //
-    let userform = document.getElementById('userform');
+    let userform = document.getElementById('theform');
 
     userform.addEventListener('submit', async function(evt) {
 
