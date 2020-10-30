@@ -9,6 +9,7 @@ h1{
 
 form {
         display: grid;
+        position: center;
 
     }
 
@@ -19,7 +20,10 @@ padding: 3px;
 }
 
 body{
-    background-image: url("LandingPageBackground.png");
+    background-image: url("./pictures/LandingPageBackground.png");
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 button {
