@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const server = express();
-//const user = require("user");
+
 const user = require("./modules/user");
 const port = (process.env.PORT || 8080);
 
