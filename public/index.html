@@ -11,11 +11,11 @@
     <h1>Login</h1>
 
     <form id="loginform">
-        <label for="inpUsername">Username: </label>
-        <input name="Username" id="inpUsername" type="text" value="test" />
+        <label for="loginUsername">Username: </label>
+        <input name="Username" id="loginUsername" type="text" value="test" />
 
-        <label for="inpPsw">Password: </label>
-        <input name="psw" id="inpPsw" type="password" value="aaa" />
+        <label for="loginPsw">Password: </label>
+        <input name="psw" id="loginPsw" type="password" value="aaa" />
 
         <input type="submit" value="Login">
 
@@ -25,14 +25,14 @@
     <h1>Create Account</h1>
     
     <form id="createform">
-        <label for="inpUsername">Username: </label>
-        <input name="Username" id="inpUsername" type="text" value="test" />
+        <label for="createUsername">Username: </label>
+        <input name="Username" id="createUsername" type="text" value="test" />
 
-        <label for="inpPsw">Password: </label>
-        <input name="psw" id="inpPsw" type="password" value="aaa" />
+        <label for="createPsw">Password: </label>
+        <input name="psw" id="createPsw" type="password" value="aaa" />
 
-        <label for="inpPsw">Confirm Password: </label>
-        <input name="psw" id="inpPsw" type="password" value="aaa" />
+        <label for="createPsw">Confirm Password: </label>
+        <input name="psw" id="createPsw" type="password" value="aaa" />
 
         <input type="submit" value="Create Account">
 
@@ -56,12 +56,12 @@
 
     evt.preventDefault();
 
-    const inpUsername = document.getElementById("inpUsername").value;
-    const inpPassword = document.getElementById("inpPsw").value;
+    const createUsername = document.getElementById("createUsername").value;
+    const createPassword = document.getElementById("createPsw").value;
     
     let body = {
-                username: inpUsername,
-                password: inpPassword
+                username: createUsername,
+                password: createPassword
             }
             let config = {
                 method: "POST",
