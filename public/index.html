@@ -7,48 +7,25 @@
 </head>
 <body>
 
-    <form id="userform">
-        <label for="inpUsername">Username:  </label>
-        <input name="email" id="inpUsername" type="text" placeholder="username" value="" />
-
-        <label for="inpPsw">Password: </label>
-        <input name="psw" id="inpPsw" type="password" placeholder="Password" value="" />
-
-        <input type="submit" value="Create account">
-    </form>
+    
     
 </body>
 
 <script>    
 
     
+
+
+    //
+    /*
     let userform = document.getElementById('userform');
 
     userform.addEventListener('submit', async function(evt) {
 
     evt.preventDefault();
 
-    /*
-
-    let url = "http://localhost:8080";
-    let fdata = new FormData(userform);
-
-    let cfg = {
-        method: "POST",
-        body: fdata
-    }
-
-    let response = await fetch(url, cfg);
-    let data = await response.text();
-
-    console.log(data);        
-
-    */
-
     const inpUsername = document.getElementById("inpUsername").value;
     const inpPassword = document.getElementById("inpPsw").value;
-
-    //localStorage.setItem('localPass', inpUsername + ":" + inpPassword);
     
     let body = {
                 username: inpUsername,
@@ -67,9 +44,8 @@
             })
 
     });
-
-    
-
+    */
+    //
     
     
 </script>
