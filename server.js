@@ -31,6 +31,19 @@ server.get("/user", async function (req, res){
 
 });
 
+server.get('/user', async function (req , res){
+  let sql = 'SELECT * FROM users';
+  try {
+    let result = await client.query(sql);
+    res.status(200).json(results.rows);
+  }
+  catch(err) {
+    res.status(500).json({error: err});
+  }
+
+
+});
+
 server.listen(server.get("port"), function () {
   console.log("server running", server.get("port"));
 });
