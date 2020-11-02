@@ -1,38 +1,38 @@
 *{
     font-size: 20px;
     font-family: sans-serif;
+    
 }
 
 h1{
     font-size:24px;
+    text-align: center;
 }
 
 form {
-        display: grid;
-        position: center;
-
+    display: grid;
+    position: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        
+        
     }
 
+label {
+     
+    grid-column: 4/ 6;
+}
+        
 input {
-margin-bottom: 10px;
-height: 30px;
-padding: 3px;
+    margin-bottom: 10px;
+    height: 30px;
+    padding: 3px;
+    grid-column: 4/ 6;
 }
 
 body{
     background-image: url("./pictures/LandingPageBackground.png");
     background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-}
-
-button {
-    display: grid;
-    position: absolute;
-    top: 35%;
-  left: 50%;
-  transform: translate(-35%, -50%);
-    width: 200px;
-    height: 30px;
+    background-attachment: fixed;
+    background-position: center;
+  
 }

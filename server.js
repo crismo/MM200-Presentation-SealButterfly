@@ -19,9 +19,16 @@ server.get("/test", (req,res,next)=>{
 server.post("/user", async function (req, res){
   const newUser = new user(req.body.username, req.body.password);
   await newUser.create();
+  console.log(newUser)
   res.status(200).json(newUser).end();
   //console.log(req.body.username + ":" + req.body.password);
-  //test
+});
+
+server.get("/user", async function (req, res){
+  const checkUser = req.headers.authorization;
+  console.log(checkUser);
+  //await checkUser.login();
+
 });
 
 server.listen(server.get("port"), function () {
