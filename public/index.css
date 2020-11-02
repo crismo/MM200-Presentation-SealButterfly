@@ -4,6 +4,12 @@
     
 }
 
+#logo{
+    margin-top: 8%;
+    margin-left: 43%;
+    margin-right: 43%;
+}
+
 form>h1{
     font-size:24px;
     text-align: center;
@@ -17,7 +23,7 @@ form {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     margin-left: 37.5%;
     margin-right: 37.5%;
-    margin-top: 15%;
+    margin-top: 10%;
     background-color: rgba(219, 214, 208, 0.918);
 }
 
