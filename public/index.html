@@ -49,8 +49,43 @@
     
 
 
+    //login user
+
+    const loginUser = document.getElementById("loginform");
+
+    loginUser.addEventListener("submit", function(evt){
+        
+        evt.preventDefault();
+
+        const loginUsername = document.getElementById("loginUsername").value;
+        const loginPsw = document.getElementById("loginPsw").value;
+
+        let username = loginUsername
+        let password = loginPsw
+
+        const credentials = "Basic " + window.btoa(`${username}:${password}`);
+        //const credentials = username + ":" + password;
+
+        let config = {
+            method: "GET",
+            headers: {
+            "content-type": "application/json",
+            "authorization": credentials
+            }
+        }
+
+        fetch("/user", config).then(resp => {
+            console.log(resp.status);
+        });
+
+    })
+
+    
     //
-    let userform = document.getElementById('createform');
+
+
+    //create User
+    const userform = document.getElementById('createform');
 
     userform.addEventListener('submit', async function(evt) {
 
@@ -79,7 +114,12 @@
             })
 
         }else{
-            console.log("Passwords don't match!");
+            // div shows up with text
+            let errorDiv = document.createElement("div")
+            errorDiv.innerHTML = "Passwords don't match!";
+            document.body.appendChild(errorDiv);
+
+            
         }
     });
     
