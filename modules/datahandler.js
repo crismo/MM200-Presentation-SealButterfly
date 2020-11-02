@@ -23,11 +23,11 @@ class StorageHandler {
             
             if(nameCheck !== undefined){
                 results = "User already exists";
-                return;
+                return results;
             }else{
                 results = await client.query('INSERT INTO "public"."users"("username", "password") VALUES($1, $2) RETURNING *;', [username, password]);
                 results = results.rows[0];
-                return;
+                return results;
             }
             
         }catch(err){
@@ -37,6 +37,8 @@ class StorageHandler {
 
         return;
     }
+
+    
 
 }
 
