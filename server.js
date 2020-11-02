@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const server = express();
 
 const user = require("./modules/user");
+const auth = require("./modules/auth");
+const authenticator = require("./modules/auth");
 const port = (process.env.PORT || 8080);
 
 server.set("port", port);
@@ -25,9 +27,22 @@ server.post("/user", async function (req, res){
 });
 
 server.get("/user", async function (req, res){
-  const checkUser = req.headers.authorization;
-  console.log(checkUser);
+  const checkUser = await authenticator(req);
+  //console.log(checkUser);
   //await checkUser.login();
+
+});
+
+server.get('/user', async function (req , res){
+  let sql = 'SELECT * FROM users';
+  try {
+    let result = await client.query(sql);
+    res.status(200).json(results.rows);
+  }
+  catch(err) {
+    res.status(500).json({error: err});
+  }
+
 
 });
 
