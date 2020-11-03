@@ -1,0 +1,40 @@
+*{
+    font-size: 20px;
+    font-family: sans-serif;
+    
+}
+
+body{
+    background-image: url("./pictures/LandingPageBackground.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
+
+
+#container>div {
+    border: 1px solid #000;
+    background-color: aliceblue;
+}
+
+#container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 150px 1fr 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr 1fr 1fr 100px;
+    
+    grid-template-areas: "hd hd hd hd"
+                         "mn ct ct ct"
+                         "mn ct ct ct"
+                         "mn ct ct ct"
+                         "mn ct ct ct"
+                         "ft ft ft ft";
+}
+
+.header {grid-area: hd}
+    .menu {grid-area: mn}
+    .content {
+        grid-area: ct;
+        overflow-y: scroll;
+    }
+    .footer {grid-area: ft}  

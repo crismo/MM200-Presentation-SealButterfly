@@ -44,7 +44,7 @@ display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr;
 border-top-left-radius: 0%;
 border-top-right-radius: 0%;
-border-top-color: rgba(207, 203, 197, 1);
+border-top-color: rgba(207, 203, 197    , 1);
 
 
 }
