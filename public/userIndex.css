@@ -20,21 +20,31 @@ body{
 #container {
     display: grid;
     height: 100vh;
-    grid-template-columns: 150px 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 100px 1fr 1fr 1fr 1fr 100px;
     
     grid-template-areas: "hd hd hd hd"
-                         "mn ct ct ct"
-                         "mn ct ct ct"
-                         "mn ct ct ct"
-                         "mn ct ct ct"
-                         "ft ft ft ft";
+                         "nsm mprsm mpusm psm"
+                         "nsm mprsm mpusm psm"
+                         "nsm mprsm mpusm psm"
+                         "nsm mprsm mpusm psm"
+                         "nsm mprsm mpusm psm";
 }
 
 .header {grid-area: hd}
-    .menu {grid-area: mn}
-    .content {
-        grid-area: ct;
+.newSlideMenu {
+    grid-area: nsm;
+    overflow-y: scroll;
+}
+.myPrivateSlideMenu {
+        grid-area: mprsm;
         overflow-y: scroll;
     }
-    .footer {grid-area: ft}  
+.myPublicSlideMenu {
+    grid-area: mpusm;
+    overflow-y: scroll;
+}  
+.publicSlideMenu {
+    grid-area: psm;
+    overflow-y: scroll;
+}
