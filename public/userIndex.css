@@ -18,13 +18,13 @@ body{
 }
 
 #container {
+    margin-top: 10%;
     display: grid;
     height: 100vh;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 100px 1fr 1fr 1fr 1fr 100px;
+    grid-template-rows: 100px 1fr 1fr 1fr 1fr ;
     
     grid-template-areas: "hd hd hd hd"
-                         "nsm mprsm mpusm psm"
                          "nsm mprsm mpusm psm"
                          "nsm mprsm mpusm psm"
                          "nsm mprsm mpusm psm"
