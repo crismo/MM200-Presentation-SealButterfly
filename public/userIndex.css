@@ -4,6 +4,11 @@
     
 }
 
+#logo{
+   margin-left: 43%;
+   margin-top: 2%;
+}
+
 body{
     background-image: url("./pictures/LandingPageBackground.png");
     background-repeat: no-repeat;
@@ -18,7 +23,7 @@ body{
 }
 
 #container {
-    margin-top: 10%;
+    margin-top: 0;
     display: grid;
     height: 100vh;
     grid-template-columns: 1fr 1fr 1fr 1fr;
