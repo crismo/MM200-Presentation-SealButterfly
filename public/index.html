@@ -53,8 +53,6 @@
     const loginUser = document.getElementById("loginform");
 
     loginUser.addEventListener("submit", function(evt){
-
-        location.href = "userIndex.html";
         
         evt.preventDefault();
 
@@ -82,6 +80,8 @@
 
         fetch("/user", config).then(resp => {
             console.log(resp.status);
+            //if test hvis login er successful
+            location.href = "userIndex.html";
         });
 
     }else{
@@ -98,8 +98,6 @@
     const userform = document.getElementById('createform');
 
     userform.addEventListener('submit', async function(evt) {
-
-        location.href = "userIndex.html";
 
     evt.preventDefault();
 
@@ -126,6 +124,8 @@
 
             fetch("/user", config).then(resp => {
                 console.log(resp.status);
+                //if test om create er successful
+                location.href = "userIndex.html";
             })
 
         }else{
