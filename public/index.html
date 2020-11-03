@@ -59,6 +59,8 @@
         const loginUsername = document.getElementById("loginUsername").value;
         const loginPsw = document.getElementById("loginPsw").value;
 
+        if(loginUsername !== "" && loginPsw !== ""){
+
         let username = loginUsername
         let password = loginPsw
 
@@ -80,6 +82,10 @@
             console.log(resp.status);
         });
 
+    }else{
+        //return invalid username/password
+    }
+
     })
 
     
@@ -95,6 +101,9 @@
 
     const createUsername = document.getElementById("createUsername").value;
     const createPassword = document.getElementById("createPsw").value;
+
+    if(createUsername !== "" && createPassword !== ""){
+
     const createPasswordConf = document.getElementById("createPswConf").value;
 
     if(createPassword === createPasswordConf){
@@ -123,6 +132,11 @@
 
             
         }
+    }else{
+        //return invalid username/password
+    }
+
+
     });
     
     
