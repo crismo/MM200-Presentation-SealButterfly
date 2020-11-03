@@ -17,6 +17,16 @@ body{
     background-position: center; 
 }
 
+#account>logOut{
+    border: 1px solid #000;
+
+}
+
+#account {
+    background-position-x: right;
+    
+}
+
 
 #container>div {
     border: 1px solid #000;
