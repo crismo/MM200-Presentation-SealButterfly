@@ -1,0 +1,50 @@
+*{
+    font-size: 20px;
+    font-family: sans-serif;
+    
+}
+
+body{
+    background-image: url("./pictures/LandingPageBackground.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
+
+
+#container>div {
+    border: 1px solid #000;
+    background-color: aliceblue;
+}
+
+#container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr 1fr 1fr 100px;
+    
+    grid-template-areas: "hd hd hd hd"
+                         "nsm mprsm mpusm psm"
+                         "nsm mprsm mpusm psm"
+                         "nsm mprsm mpusm psm"
+                         "nsm mprsm mpusm psm"
+                         "nsm mprsm mpusm psm";
+}
+
+.header {grid-area: hd}
+.newSlideMenu {
+    grid-area: nsm;
+    overflow-y: scroll;
+}
+.myPrivateSlideMenu {
+        grid-area: mprsm;
+        overflow-y: scroll;
+    }
+.myPublicSlideMenu {
+    grid-area: mpusm;
+    overflow-y: scroll;
+}  
+.publicSlideMenu {
+    grid-area: psm;
+    overflow-y: scroll;
+}
