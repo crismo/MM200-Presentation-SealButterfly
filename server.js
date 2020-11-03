@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const server = express();
 
 const user = require("./modules/user");
-const auth = require("./modules/auth");
 const authenticator = require("./modules/auth");
 const { loginUser } = require("./modules/datahandler");
 const port = (process.env.PORT || 8080);
