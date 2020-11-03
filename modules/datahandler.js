@@ -22,11 +22,13 @@ class StorageHandler {
             const nameCheck = results.rows.find(element => element = username);
             
             if(nameCheck !== undefined){
-                results = "User already exists";
+                results = "Username is already taken!";  
                 return results;
             }else{
                 results = await client.query('INSERT INTO "public"."users"("username", "password") VALUES($1, $2) RETURNING *;', [username, password]);
-                results = results.rows[0];
+                //results = results.rows[0];
+                //console.log(results);
+                results = "User created!";
                 return results;
             }
             
@@ -55,18 +57,20 @@ class StorageHandler {
                 if(password === results.rows[0].password){
 
                     //console.log("login");
-                    results = "login successfull";
+                    results = "Login Successful";
                     return results;
 
                 }else{
 
-                    results = "Password or username does not exist";
+                    results = "Password or username is incorrect";
                     return results;
                     
                 }
                 
             }else{
                 //console.log("Password or username does not exist");
+                results = "Password or username is incorrect";
+                return results;
             }
 
 

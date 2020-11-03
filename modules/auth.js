@@ -1,5 +1,5 @@
 const user = require("./user");
-const authenticator = (req, res,next) => {
+const authenticator = async (req, res,next) => {
     
 
     if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
@@ -9,8 +9,12 @@ const authenticator = (req, res,next) => {
     const credentials = req.headers.authorization.split(' ')[1];
     const [username, password] = Buffer.from(credentials, 'base64').toString('UTF-8').split(":");
 
-    const user = authenticate(username, password);
-    console.log(user);
+    const checkUser = new user(username, password);
+    const resp = await checkUser.login(); //response
+   
+    //console.log(resp);
+
+    return resp;
 
     //console.log(user)
     /*if(user) {
@@ -21,21 +25,6 @@ const authenticator = (req, res,next) => {
     //return user;
 
 }
-
-
-function authenticate(username, password){
-    //console.log(username + ":" + password);
-    const checkUser = new user(username, password);
-    let resp = "test";
-    test();
-    async function test(){
-    resp = await checkUser.login();
-    //console.log(resp);
-    return resp;
-    }
-    //resp = "test";
-    
-};
 
 
 module.exports = authenticator

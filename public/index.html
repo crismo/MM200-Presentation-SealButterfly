@@ -81,7 +81,7 @@
         fetch("/user", config).then(resp => {
             //console.log(resp.status);
             //if test hvis login er successful
-            test(resp);
+            redirect(resp);
         });
 
     }else{
@@ -125,7 +125,7 @@
             fetch("/user", config).then(resp => {
                 //console.log(resp.status);
                 //if test om create er successful
-                test(resp);
+                redirect(resp);
                 
             });
 
@@ -149,7 +149,7 @@
 
     //
 
-    function test(res){
+    function redirect(res){
         console.log(res.status);
         //location.href = "userIndex.html";
     }
