@@ -10,24 +10,31 @@ const authenticator = (req, res,next) => {
     const [username, password] = Buffer.from(credentials, 'base64').toString('UTF-8').split(":");
 
     const user = authenticate(username, password);
+    console.log(user);
+
     //console.log(user)
-    if(user) {
+    /*if(user) {
         return res.status(403).end()
-    }
+    }*/
     //next();
 
+    //return user;
 
 }
-
-
-
 
 
 function authenticate(username, password){
     //console.log(username + ":" + password);
     const checkUser = new user(username, password);
-    checkUser.login();
-    return checkUser;
+    let resp = "test";
+    test();
+    async function test(){
+    resp = await checkUser.login();
+    //console.log(resp);
+    return resp;
+    }
+    //resp = "test";
+    
 };
 
 

@@ -29,6 +29,7 @@ server.post("/user", async function (req, res){
 server.get("/user", async function (req, res){
   //console.log(req.headers.authorization)
   const checkUser = await authenticator(req);
+  //console.log(checkUser)
 
   
   res.status(200).json(checkUser).end();
