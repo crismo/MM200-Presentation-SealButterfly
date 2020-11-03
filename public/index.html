@@ -79,9 +79,9 @@
         }
 
         fetch("/user", config).then(resp => {
-            console.log(resp.status);
+            //console.log(resp.status);
             //if test hvis login er successful
-            location.href = "userIndex.html";
+            test(resp);
         });
 
     }else{
@@ -123,10 +123,11 @@
             }
 
             fetch("/user", config).then(resp => {
-                console.log(resp.status);
+                //console.log(resp.status);
                 //if test om create er successful
-                location.href = "userIndex.html";
-            })
+                test(resp);
+                
+            });
 
         }else{
             // div shows up with text
@@ -144,6 +145,15 @@
     });
     
     
+    //
+
+    //
+
+    function test(res){
+        console.log(res.status);
+        //location.href = "userIndex.html";
+    }
+
     //
     
     
