@@ -5,6 +5,7 @@ const server = express();
 const user = require("./modules/user");
 const auth = require("./modules/auth");
 const authenticator = require("./modules/auth");
+const { loginUser } = require("./modules/datahandler");
 const port = (process.env.PORT || 8080);
 
 server.set("port", port);
@@ -21,28 +22,21 @@ server.get("/test", (req,res,next)=>{
 server.post("/user", async function (req, res){
   const newUser = new user(req.body.username, req.body.password);
   await newUser.create();
-  console.log(newUser)
   res.status(200).json(newUser).end();
   //console.log(req.body.username + ":" + req.body.password);
 });
 
 server.get("/user", async function (req, res){
+  //console.log(req.headers.authorization)
   const checkUser = await authenticator(req);
+
+  
+  res.status(200).json(checkUser).end();
+  
+  //const checkUser = new user(username, password);
+  //await checkUser.login();
   //console.log(checkUser);
   //await checkUser.login();
-
-});
-
-server.get('/user', async function (req , res){
-  let sql = 'SELECT * FROM users';
-  try {
-    let result = await client.query(sql);
-    res.status(200).json(results.rows);
-  }
-  catch(err) {
-    res.status(500).json({error: err});
-  }
-
 
 });
 
