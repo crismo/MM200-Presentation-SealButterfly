@@ -21,6 +21,10 @@
         <input type="submit" value="Login">
 
     </form>
+
+    <p id="info"></p>
+
+    
     
     <form id="createform">
         <h1>Create Account</h1>
@@ -34,9 +38,10 @@
         <input name="psw" id="createPswConf" type="password" value="aaa" />
 
         <input type="submit" value="Create Account">
-
      
     </form>
+
+    <p id="info2"></p>
 
     
 </body>
@@ -79,8 +84,6 @@
         }
 
         fetch("/user", config).then(resp => {
-            //console.log(resp.status);
-            //if test hvis login er successful
             redirect(resp);
         });
 
@@ -123,10 +126,7 @@
             }
 
             fetch("/user", config).then(resp => {
-                //console.log(resp.status);
-                //if test om create er successful
                 redirect(resp);
-                
             });
 
         }else{
@@ -151,7 +151,10 @@
 
     function redirect(res){
         console.log(res.status);
-        //location.href = "userIndex.html";
+        console.log(res);
+        if(res.redirect){
+            location.href = "userIndex.html";
+        }
     }
 
     //

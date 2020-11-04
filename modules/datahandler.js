@@ -22,13 +22,13 @@ class StorageHandler {
             const nameCheck = results.rows.find(element => element = username);
             
             if(nameCheck !== undefined){
-                results = "Username is already taken!";  
+                results = 401; //Username is already taken!, 401
                 return results;
             }else{
                 results = await client.query('INSERT INTO "public"."users"("username", "password") VALUES($1, $2) RETURNING *;', [username, password]);
                 //results = results.rows[0];
                 //console.log(results);
-                results = "User created!";
+                results = 200; //User created!, 200
                 return results;
             }
             
@@ -43,38 +43,30 @@ class StorageHandler {
     async loginUser(username, password){
         const client = new pg.Client(this.credentials);
         let results = null;
+
         try{
             
             await client.connect();
-           // results = await client.query("SELECT * FROM users WHERE username=$1 AND password=$2", [username, password]);
-            //console.log(results.rows);
-
-            
             
             results = await client.query("SELECT password FROM users WHERE username=$1 AND password=$2", [username, password]);
             if(results.rows[0] !== undefined){
                 
                 if(password === results.rows[0].password){
 
-                    //console.log("login");
-                    results = "Login Successful";
+                    results = 200; //login successful, 200
                     return results;
 
                 }else{
 
-                    results = "Password or username is incorrect";
+                    results = 401; //Password or username is incorrect, 401 unauthorized
                     return results;
                     
                 }
                 
             }else{
-                //console.log("Password or username does not exist");
-                results = "Password or username is incorrect";
+                results = 401; //Password or username is incorrect, 401 unauthorized
                 return results;
             }
-
-
-            
             
         }catch(err){
             console.log(err);
