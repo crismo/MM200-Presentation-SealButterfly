@@ -3,7 +3,8 @@ const authenticator = async (req, res,next) => {
     
 
     if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
-        return res.append("WWW-Authenticate", 'Basic realm="User Visible Realm", charset="UTF-8"').status(401).end()
+        //return res.append("WWW-Authenticate", 'Basic realm="User Visible Realm", charset="UTF-8"').status(401).end(); //problem siden res blir ikke lest
+        return "Feil";
     }
 
     const credentials = req.headers.authorization.split(' ')[1];

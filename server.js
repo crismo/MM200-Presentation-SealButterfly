@@ -48,10 +48,17 @@ server.get("/user", async function (req, res){
       resp = "Password or username is incorrect";
       break;
   }
+  
+  //res.redirect(200, '/');
   res.status(checkUser).json(resp).end();
   //Returnerer riktig statuskode og beskjed til brukeren
 
 });
+
+//server.get("*", (req, res) => { //redirecter til index.html hvis feks linken er /test eller noe som ikke finnes
+  //res.redirect('/');
+//});
+
 
 server.listen(server.get("port"), function () {
   console.log("server running", server.get("port"));

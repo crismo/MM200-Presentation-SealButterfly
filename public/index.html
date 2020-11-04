@@ -18,11 +18,12 @@
         <label for="loginPsw">Password: </label>
         <input name="psw" id="loginPsw" type="password" value="aaa" />
 
+        <p id="info"></p>
         <input type="submit" value="Login">
 
     </form>
 
-    <p id="info"></p>
+    
 
     
     
@@ -88,7 +89,10 @@
         });
 
     }else{
-        //return invalid username/password
+        // p shows up with text info
+        const infoDiv = document.getElementById("info");
+        infoDiv.innerHTML = "Invalid username or password";
+        document.body.appendChild(infoDiv);
     }
 
     })
@@ -130,15 +134,18 @@
             });
 
         }else{
-            // div shows up with text
-            let errorDiv = document.createElement("div")
-            errorDiv.innerHTML = "Passwords don't match!";
-            document.body.appendChild(errorDiv);
+            // p shows up with text info2
+            const infoDiv = document.getElementById("info2");
+            infoDiv.innerHTML = "Passwords don't match!";
+            document.body.appendChild(infoDiv);
 
             
         }
     }else{
-        //return invalid username/password
+        // p shows up with text info2
+        const infoDiv = document.getElementById("info2");
+        infoDiv.innerHTML = "Invalid username or password";
+        document.body.appendChild(infoDiv);
     }
 
 
@@ -152,9 +159,10 @@
     function redirect(res){
         console.log(res.status);
         console.log(res);
-        if(res.redirect){
-            location.href = "userIndex.html";
-        }
+        document.getElementById("info").innerHTML = res.status;
+        //if(res.redirect){
+            //location.href = "userIndex.html";
+        //}
     }
 
     //
