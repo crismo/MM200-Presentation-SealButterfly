@@ -54,6 +54,8 @@ class StorageHandler {
                 if(password === results.rows[0].password){
 
                     results = 200; //login successful, 200
+                    results.rows[0].id
+                    console.log(results.rows[0].id);
                     return results;
 
                 }else{

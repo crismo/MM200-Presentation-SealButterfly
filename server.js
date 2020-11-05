@@ -47,9 +47,12 @@ server.get("/user", async function (req, res){
     case 401:
       resp = "Password or username is incorrect";
       break;
+    case 403:
+      resp = "Forbidden!";
+      break;
   }
   
-  //res.redirect(200, '/');
+  //res.redirect(200, '/userIndex.html');
   res.status(checkUser).json(resp).end();
   //Returnerer riktig statuskode og beskjed til brukeren
 
