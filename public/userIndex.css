@@ -17,8 +17,12 @@ body{
     background-position: center; 
 }
 
-#account>logOut{
+.logOut{
     border: 1px solid #000;
+    position: fixed;
+    left: 94%;
+    right: 1%;
+    top: 10%;
 
 }
 

@@ -5,7 +5,7 @@
 }
 
 #logo{
-    margin-top: 8%;
+    position: fixed;
     margin-left: 43%;
     margin-right: 43%;
 }
@@ -19,11 +19,8 @@ form>h1{
 
 form {
     display: grid;
-    position: center;
+    position: fixed;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    margin-left: 37.5%;
-    margin-right: 37.5%;
-    margin-top: 10%;
     background-color: rgba(219, 214, 208, 0.918);
     border-radius: 5px;
     border-style: solid;
@@ -31,6 +28,11 @@ form {
 }
 
 #loginform{
+    position: fixed;
+    top: 35%;
+    left: 37%;
+    right: 37%;
+    bottom: 40%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     border-bottom-left-radius: 0%;
@@ -39,12 +41,16 @@ form {
 }
 
 #createform{
-margin-top: 0px;
-display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr;
-border-top-left-radius: 0%;
-border-top-right-radius: 0%;
-border-top-color: rgba(207, 203, 197, 1);
+    position: fixed;
+    top: 60%;
+    left: 37%;
+    right: 37%;
+    bottom: 9%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    border-top-color: rgba(207, 203, 197, 1);
 
 
 }
@@ -74,15 +80,58 @@ label {
 }
         
 input {
+    position: fixed;
+    left: 45%;
+    right: 40%;
     margin-bottom: 5px;
     height: 30px;
     grid-column: 5/ 6;
     
 }
 
+#loginUsername{
+    position: fixed;
+    top:45%;
+
+}
+
+#loginPsw{
+    position: fixed;
+    top: 51%;
+}
+
+#subLogin{
+    position: fixed;
+    top: 56%;
+    left: 56%;
+}
+
+#createUsername{
+    position: fixed;
+    top: 69%;
+}
+
+#createPsw{
+    position: fixed;
+    top: 75%;
+}
+
+#createPswConf{
+    position: fixed;
+    top: 81%;
+    left: 48%;
+    right: 51%;
+}
+
+#subAcc{
+    position: fixed;
+    top: 86%;
+    left: 51%;
+}
+
 body{
     background-image: url("./pictures/LandingPageBackground.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center; 
+    background-position-x: center; 
 }
