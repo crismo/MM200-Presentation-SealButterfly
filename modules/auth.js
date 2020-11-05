@@ -18,9 +18,9 @@ const authenticator = async (req, res,next) => {
     req.user = checkUser;
 
     //console.log(user)
-    if(!checkUser) {
+    /*if(!checkUser) {
         return 403;
-    }
+    }*/
     //next();
 
     return resp;
