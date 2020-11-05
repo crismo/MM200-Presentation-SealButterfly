@@ -1,4 +1,5 @@
 const pg = require("pg");
+const jwt = require('jsonwebtoken');
 const dbCredentials = process.env.DATABASE_URL || require("../localenv").credentials;
 
 class StorageHandler {
@@ -55,9 +56,15 @@ class StorageHandler {
                 
                 if(password === results.rows[0].password){
 
-                    results = 200; //login successful, 200
-                    //results.rows[0].id
-                    //console.log(results.rows[0].id);
+                    const idResults = await client.query('SELECT id from "users" where username=$1', [username]);
+                    const payload = {id: idResults.rows[0].id};//{id: result[0].id};
+                    const secret = "JosteinNordengen";
+
+                    const token = jwt.sign(payload, secret, {expiresIn: "12h"});
+
+                    results = {"status": 200, "token": token}; //login successful, 200
+
+                    //console.log(results.token)
                     client.end();
                     return results;
 
