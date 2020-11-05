@@ -4,6 +4,12 @@
     
 }
 
+#logo{
+    margin-top: 8%;
+    margin-left: 43%;
+    margin-right: 43%;
+}
+
 form>h1{
     font-size:24px;
     text-align: center;
@@ -17,19 +23,28 @@ form {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     margin-left: 37.5%;
     margin-right: 37.5%;
-    margin-top: 15%;
+    margin-top: 10%;
     background-color: rgba(219, 214, 208, 0.918);
+    border-radius: 5px;
+    border-style: solid;
+    border-color: rgba(148, 143, 138, 1);
 }
 
 #loginform{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+    border-bottom-color: rgba(207, 203, 197, 0.952);
 }
 
 #createform{
 margin-top: 0px;
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr;
+border-top-left-radius: 0%;
+border-top-right-radius: 0%;
+border-top-color: rgba(207, 203, 197, 1);
 
 
 }
@@ -51,10 +66,9 @@ grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 
-
-
 label {
-     
+    margin-bottom: 5px;
+    height: 30px;
     grid-column: 4/ 5;
     
 }

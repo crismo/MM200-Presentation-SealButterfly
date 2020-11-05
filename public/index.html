@@ -8,23 +8,27 @@
 </head>
 <body>
 
-    <h1>Login</h1>
+    <img id="logo" src= "./pictures/logo.png">
 
     <form id="loginform">
+        <h1>Login</h1>
         <label for="loginUsername">Username: </label>
         <input name="Username" id="loginUsername" type="text" value="test" />
 
         <label for="loginPsw">Password: </label>
         <input name="psw" id="loginPsw" type="password" value="aaa" />
 
+        <p id="info"></p>
         <input type="submit" value="Login">
 
     </form>
 
+    
 
-    <h1>Create Account</h1>
+    
     
     <form id="createform">
+        <h1>Create Account</h1>
         <label for="createUsername">Username: </label>
         <input name="Username" id="createUsername" type="text" value="test" />
 
@@ -35,9 +39,10 @@
         <input name="psw" id="createPswConf" type="password" value="aaa" />
 
         <input type="submit" value="Create Account">
-
      
     </form>
+
+    <p id="info2"></p>
 
     
 </body>
@@ -53,12 +58,14 @@
 
     const loginUser = document.getElementById("loginform");
 
-    loginUser.addEventListener("submit", function(evt){
+    loginUser.addEventListener("submit", async function(evt){
         
         evt.preventDefault();
 
         const loginUsername = document.getElementById("loginUsername").value;
         const loginPsw = document.getElementById("loginPsw").value;
+
+        if(loginUsername !== "" && loginPsw !== ""){
 
         let username = loginUsername
         let password = loginPsw
@@ -77,9 +84,24 @@
             }
         }
 
-        fetch("/user", config).then(resp => {
-            console.log(resp.status);
-        });
+        /*fetch("/user", config).then(resp => {
+            redirect(resp);
+        });*/
+
+        const response = await fetch("/user", config);
+        const data = await response.json();
+        console.log(response.status);
+        
+        /*if(response.status === 200){
+            location.href = "userIndex.html";
+        }*/
+
+    }else{
+        // p shows up with text info
+        const infoDiv = document.getElementById("info");
+        infoDiv.innerHTML = "Invalid username or password";
+        document.body.appendChild(infoDiv);
+    }
 
     })
 
@@ -96,6 +118,9 @@
 
     const createUsername = document.getElementById("createUsername").value;
     const createPassword = document.getElementById("createPsw").value;
+
+    if(createUsername !== "" && createPassword !== ""){
+
     const createPasswordConf = document.getElementById("createPswConf").value;
 
     if(createPassword === createPasswordConf){
@@ -112,21 +137,47 @@
                 body: JSON.stringify(body)
             }
 
-            fetch("/user", config).then(resp => {
-                console.log(resp.status);
-            })
+            /*fetch("/user", config).then(resp => {
+                redirect(resp);
+            });*/
+
+            const response = await fetch("/user", config);
+            const data = await response.json();
+            console.log(response.status);
 
         }else{
-            // div shows up with text
-            let errorDiv = document.createElement("div")
-            errorDiv.innerHTML = "Passwords don't match!";
-            document.body.appendChild(errorDiv);
+            // p shows up with text info2
+            const infoDiv = document.getElementById("info2");
+            infoDiv.innerHTML = "Passwords don't match!";
+            document.body.appendChild(infoDiv);
 
             
         }
+    }else{
+        // p shows up with text info2
+        const infoDiv = document.getElementById("info2");
+        infoDiv.innerHTML = "Invalid username or password";
+        document.body.appendChild(infoDiv);
+    }
+
+
     });
     
     
+    //
+
+    //
+
+    function redirect(res){
+        console.log(res.status);
+        console.log(res);
+        document.getElementById("info").innerHTML = res.status;
+        location.href = "/user";
+        //if(res.redirect){
+            //location.href = "userIndex.html";
+        //}
+    }
+
     //
     
     

@@ -4,11 +4,27 @@
     
 }
 
+#logo{
+   margin-left: 43%;
+   margin-top: 2%;
+   margin-bottom: 1%;
+}
+
 body{
     background-image: url("./pictures/LandingPageBackground.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
+}
+
+#account>logOut{
+    border: 1px solid #000;
+
+}
+
+#account {
+    background-position-x: right;
+    
 }
 
 
@@ -21,10 +37,9 @@ body{
     display: grid;
     height: 100vh;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 100px 1fr 1fr 1fr 1fr 100px;
+    grid-template-rows: 100px 1fr 1fr 1fr 1fr ;
     
     grid-template-areas: "hd hd hd hd"
-                         "nsm mprsm mpusm psm"
                          "nsm mprsm mpusm psm"
                          "nsm mprsm mpusm psm"
                          "nsm mprsm mpusm psm"

@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const server = express();
 
 const user = require("./modules/user");
-const auth = require("./modules/auth");
 const authenticator = require("./modules/auth");
 const { loginUser } = require("./modules/datahandler");
 const port = (process.env.PORT || 8080);
@@ -12,33 +11,57 @@ server.set("port", port);
 server.use(express.static("public"));
 server.use(bodyParser.json());
 
-server.get("/test", (req,res,next)=>{
-
-  res.status(200).send("Hello World").end();
-
-});
-
-//når clientet fetcher /user kommer man hit
+//når clientet fetcher med post /user kommer man hit
 server.post("/user", async function (req, res){
-  const newUser = new user(req.body.username, req.body.password);
-  await newUser.create();
-  res.status(200).json(newUser).end();
-  //console.log(req.body.username + ":" + req.body.password);
+  const newUser = new user(req.body.username, req.body.password); //lager en ny user, med brukernavn og passord som clienten har sendt inn
+  const statusCode = await newUser.create(); //returnerer en http statuskode
+  let resp = "";
+
+  //her sjekker den hvilken statuskode som ble returnert, slik at resp kan få riktig verdi
+  switch(statusCode){
+    case 200:
+      resp = "User created!";
+      break;
+    case 401:
+      resp = "Username is already taken!";
+      break;
+  }
+  res.status(statusCode).json(resp).end();
+  //Returnerer riktig statuskode og beskjed til brukeren
+
 });
 
+
+
+//når clientet fetcher med get /user kommer man hit
 server.get("/user", async function (req, res){
-  //console.log(req.headers.authorization)
-  const checkUser = await authenticator(req);
+  //kryptert brukernavn og passord blir sendt inn hit fra index.html
+  const checkUser = await authenticator(req); //returnerer en http statuskode
+  let resp = "";
 
+  //her sjekker den hvilken statuskode som ble returnert, slik at resp kan få riktig verdi
+  switch(checkUser){
+    case 200:
+      resp = "Login successful";
+      break;
+    case 401:
+      resp = "Password or username is incorrect";
+      break;
+    case 403:
+      resp = "Forbidden!";
+      break;
+  }
   
-  res.status(200).json(checkUser).end();
-  
-  //const checkUser = new user(username, password);
-  //await checkUser.login();
-  //console.log(checkUser);
-  //await checkUser.login();
+  //res.redirect(200, '/userIndex.html');
+  res.status(checkUser).json(resp).end();
+  //Returnerer riktig statuskode og beskjed til brukeren
 
 });
+
+//server.get("*", (req, res) => { //redirecter til index.html hvis feks linken er /test eller noe som ikke finnes
+  //res.redirect('/');
+//});
+
 
 server.listen(server.get("port"), function () {
   console.log("server running", server.get("port"));
