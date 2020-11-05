@@ -23,21 +23,23 @@ class StorageHandler {
             
             if(nameCheck !== undefined){
                 results = 401; //Username is already taken!, 401
+                client.end();
                 return results;
             }else{
                 results = await client.query('INSERT INTO "public"."users"("username", "password") VALUES($1, $2) RETURNING *;', [username, password]);
                 //results = results.rows[0];
                 //console.log(results);
                 results = 200; //User created!, 200
+                client.end();
                 return results;
             }
             
         }catch(err){
-            results = err;
+            client.end();
             console.log(err);
         }
 
-        return;
+        //return 403;
     }
 
     async loginUser(username, password){
@@ -54,21 +56,27 @@ class StorageHandler {
                 if(password === results.rows[0].password){
 
                     results = 200; //login successful, 200
+                    //results.rows[0].id
+                    //console.log(results.rows[0].id);
+                    client.end();
                     return results;
 
                 }else{
 
                     results = 401; //Password or username is incorrect, 401 unauthorized
+                    client.end();
                     return results;
                     
                 }
                 
             }else{
                 results = 401; //Password or username is incorrect, 401 unauthorized
+                client.end();
                 return results;
             }
             
         }catch(err){
+            client.end();
             console.log(err);
         }
 

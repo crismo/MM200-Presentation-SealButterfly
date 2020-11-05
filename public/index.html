@@ -58,7 +58,7 @@
 
     const loginUser = document.getElementById("loginform");
 
-    loginUser.addEventListener("submit", function(evt){
+    loginUser.addEventListener("submit", async function(evt){
         
         evt.preventDefault();
 
@@ -84,9 +84,13 @@
             }
         }
 
-        fetch("/user", config).then(resp => {
+        /*fetch("/user", config).then(resp => {
             redirect(resp);
-        });
+        });*/
+
+        const response = await fetch("/user", config);
+        const data = await response.json();
+        console.log(response.status);
 
     }else{
         // p shows up with text info
@@ -129,9 +133,13 @@
                 body: JSON.stringify(body)
             }
 
-            fetch("/user", config).then(resp => {
+            /*fetch("/user", config).then(resp => {
                 redirect(resp);
-            });
+            });*/
+
+            const response = await fetch("/user", config);
+            const data = await response.json();
+            console.log(response.status);
 
         }else{
             // p shows up with text info2
@@ -160,6 +168,7 @@
         console.log(res.status);
         console.log(res);
         document.getElementById("info").innerHTML = res.status;
+        location.href = "/user";
         //if(res.redirect){
             //location.href = "userIndex.html";
         //}

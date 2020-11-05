@@ -26,7 +26,9 @@ server.post("/user", async function (req, res){
       resp = "Username is already taken!";
       break;
   }
-  res.status(statusCode).json(resp).end();
+
+  res.status(200).json("test").end();
+  //res.status(statusCode).json(resp).end();
   //Returnerer riktig statuskode og beskjed til brukeren
 
 });
@@ -47,10 +49,14 @@ server.get("/user", async function (req, res){
     case 401:
       resp = "Password or username is incorrect";
       break;
+    case 403:
+      resp = "Forbidden!";
+      break;
   }
   
-  //res.redirect(200, '/');
-  res.status(checkUser).json(resp).end();
+  //res.redirect(200, '/userIndex.html');
+  res.status(200).json("test").end();
+  //res.status(checkUser).json(resp).end();
   //Returnerer riktig statuskode og beskjed til brukeren
 
 });
