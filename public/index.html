@@ -12,10 +12,12 @@
 
     <form id="loginform">
         <h1>Login</h1>
-        <label for="loginUsername">Username: </label>
+        <label id="loginUserLab" for="loginUsername">Username: </label>
+        <br>
         <input name="Username" id="loginUsername" type="text" value="test" />
 
-        <label for="loginPsw">Password: </label>
+        <label id="loginPswLab" for="loginPsw">Password: </label>
+        <br>
         <input name="psw" id="loginPsw" type="password" value="aaa" />
 
         
@@ -31,13 +33,16 @@
     
     <form id="createform">
         <h1>Create Account</h1>
-        <label for="createUsername">Username: </label>
+        <label id="createUsername" for="createUsername">Username: </label>
+        <br>
         <input name="Username" id="createUsername" type="text" value="test" />
 
-        <label for="createPsw">Password: </label>
+        <label id="createPsw" for="createPsw">Password: </label>
+        <br>
         <input name="psw" id="createPsw" type="password" value="aaa" />
 
-        <label for="createPswConf">Confirm Password: </label>
+        <label id="createPasswordConf" for="createPswConf">Confirm Password: </label>
+        <br>
         <input name="psw" id="createPswConf" type="password" value="aaa" />
 
         <input id="subAcc" type="submit" value="Create Account">
