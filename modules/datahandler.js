@@ -16,6 +16,7 @@ class StorageHandler {
     async insertUser(username, password){
         const client = new pg.Client(this.credentials);
         let results = null;
+        
         try {
             await client.connect();
             results = await client.query('SELECT username from "users" where username=$1', [username]);
@@ -40,7 +41,7 @@ class StorageHandler {
             console.log(err);
         }
 
-        //return 403;
+        return 403;
     }
 
     async loginUser(username, password){
