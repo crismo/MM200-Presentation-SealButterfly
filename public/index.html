@@ -106,8 +106,7 @@
         document.body.appendChild(infoDiv);
     }
 
-    })
-
+    });
     
     //
 
@@ -169,10 +168,11 @@
     //
 
     function serverResp(res, data, num){
-        console.log(res.status);
-        console.log(data.response)
+        console.log(res.status); //skriver ut status i console, feks 200, 401
+        console.log(data.response); //skriver ut responsen, feks "login successful"
+
         if(data.token){
-            console.log(data.token);
+            //console.log(data.token);
             localStorage.setItem("token", data.token);
         }
         //
