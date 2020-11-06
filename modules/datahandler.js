@@ -1,4 +1,5 @@
 const pg = require("pg");
+const sbT = require("./sbToken");
 const dbCredentials = process.env.DATABASE_URL || require("../localenv").credentials;
 
 class StorageHandler {
@@ -60,23 +61,16 @@ class StorageHandler {
                     //const secret = "JosteinNordengen";
 
 
-                    function tokenGenerator (username) {
+                    //const token = tokenGenerator(username);
+                    const newToken = new sbT();
+                    const token = await newToken.createAndEncryptToken(username);
+                    console.log(token);
 
-                        let tokenKey = "";
-                    
-                        for(let i = 0; i < 15; i++){
-                            tokenKey += Math.floor(Math.random() * 9) + 1;
-                        }
-                        const position = Math.floor(Math.random() * tokenKey.length) + 1;
-
-                        const tokenOutput = [tokenKey.slice(0, position), username, tokenKey.slice(position)].join('');
-                    
-                        return tokenOutput;
-                    
-                    }
-
-                    const token = tokenGenerator(username);
-                    //console.log(token);
+                    /*
+                    const newTxtToken = new sbT();
+                    const tokenTxt = await newTxtToken.decryptToken(token);
+                    console.log(tokenTxt);
+                    */
 
                     results = {"status": 200, "token": token}; //login successful, 200
 
