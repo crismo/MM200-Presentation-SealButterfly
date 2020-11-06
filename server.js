@@ -25,26 +25,32 @@ server.post("/user", async function (req, res){
     case 401:
       resp = "Username is already taken!";
       break;
+    default:
+      checkUser = 400;
+      resp = "Something went wrong!";
+      break;
   }
 
-  res.status(200).json("test").end();
-  //res.status(statusCode).json(resp).end();
+  res.status(statusCode).json(resp).end();
   //Returnerer riktig statuskode og beskjed til brukeren
 
 });
 
 
-
 //når clientet fetcher med get /user kommer man hit
 server.get("/user", async function (req, res){
   //kryptert brukernavn og passord blir sendt inn hit fra index.html
-  const checkUser = await authenticator(req); //returnerer en http statuskode
+  let checkUser = await authenticator(req); //returnerer en http statuskode
+  //console.log(checkUser.status)
   let resp = "";
+  const status = checkUser.status;
+  const token = checkUser.token;
 
   //her sjekker den hvilken statuskode som ble returnert, slik at resp kan få riktig verdi
-  switch(checkUser){
+  switch(status){
     case 200:
-      resp = "Login successful";
+      const msg = "Login successful";
+      resp = {"response": msg, "token": token}
       break;
     case 401:
       resp = "Password or username is incorrect";
@@ -52,11 +58,14 @@ server.get("/user", async function (req, res){
     case 403:
       resp = "Forbidden!";
       break;
+    default:
+      checkUser = 400;
+      resp = "Something went wrong!";
+      break;
   }
   
   //res.redirect(200, '/userIndex.html');
-  res.status(200).json("test").end();
-  //res.status(checkUser).json(resp).end();
+  res.status(status).json(resp).end();
   //Returnerer riktig statuskode og beskjed til brukeren
 
 });

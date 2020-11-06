@@ -96,6 +96,9 @@
         const response = await fetch("/user", config);
         const data = await response.json();
         console.log(response.status);
+        console.log(data.response)
+        //if test om data.token mer enn 0, så lagre i localstorage, hvis ikke ignore
+        localStorage.setItem("token", data.token);
 
     }else{
         // p shows up with text info
