@@ -29,7 +29,7 @@ form {
 
 #loginform{
     position: fixed;
-    top: 35%;
+    top: 300px;
     left: 37%;
     right: 37%;
     bottom: 40%;
@@ -72,62 +72,63 @@ form {
 }
 
 
-label {
-    margin-bottom: 5px;
-    height: 30px;
-    grid-column: 4/ 5;
-    
-}
-        
-input {
-    position: fixed;
-    left: 45%;
-    right: 40%;
-    margin-bottom: 5px;
-    height: 30px;
-    grid-column: 5/ 6;
-    
+#loginUserLab{
+    top: 41%;
+    left: 55%;  
 }
 
 #loginUsername{
-    position: fixed;
     top:45%;
+    left: 45%;
+    right: 45%;
+    bottom: 50%;
 
 }
 
 #loginPsw{
-    position: fixed;
     top: 51%;
+    left: 45%;
+    right: 45%;
+    bottom: 44%;
 }
 
 #subLogin{
-    position: fixed;
     top: 56%;
     left: 56%;
 }
 
 #createUsername{
-    position: fixed;
     top: 69%;
 }
 
 #createPsw{
-    position: fixed;
     top: 75%;
 }
 
 #createPswConf{
-    position: fixed;
     top: 81%;
     left: 48%;
     right: 51%;
 }
 
 #subAcc{
-    position: fixed;
     top: 86%;
     left: 51%;
 }
+
+
+#infodiv{
+    top:400px;
+    left:500px;
+}
+
+
+
+
+
+
+
+
 
 body{
     background-image: url("./pictures/LandingPageBackground.png");
