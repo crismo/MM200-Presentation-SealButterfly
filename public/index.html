@@ -33,15 +33,15 @@
     
     <form id="createform">
         <h1>Create Account</h1>
-        <label id="createUsername" for="createUsername">Username: </label>
+        <label id="createUsernameLab" for="createUsername">Username: </label>
         <br>
         <input name="Username" id="createUsername" type="text" value="test" />
 
-        <label id="createPsw" for="createPsw">Password: </label>
+        <label id="createPswLab" for="createPsw">Password: </label>
         <br>
         <input name="psw" id="createPsw" type="password" value="aaa" />
 
-        <label id="createPasswordConf" for="createPswConf">Confirm Password: </label>
+        <label id="createPasswordConfLab" for="createPswConf">Confirm Password: </label>
         <br>
         <input name="psw" id="createPswConf" type="password" value="aaa" />
 
@@ -106,8 +106,7 @@
         document.body.appendChild(infoDiv);
     }
 
-    })
-
+    });
     
     //
 
@@ -169,10 +168,11 @@
     //
 
     function serverResp(res, data, num){
-        console.log(res.status);
-        console.log(data.response)
+        console.log(res.status); //skriver ut status i console, feks 200, 401
+        console.log(data.response); //skriver ut responsen, feks "login successful"
+
         if(data.token){
-            console.log(data.token);
+            //console.log(data.token);
             localStorage.setItem("token", data.token);
         }
         //

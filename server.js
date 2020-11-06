@@ -13,9 +13,16 @@ server.use(bodyParser.json());
 
 //når clientet fetcher med post /user kommer man hit
 server.post("/user", async function (req, res){
-  const newUser = new user(req.body.username, req.body.password); //lager en ny user, med brukernavn og passord som clienten har sendt inn
-  let statusCode = await newUser.create(); //returnerer en http statuskode
+  let max = 20;
   const resp = {};
+  let statusCode = "";
+
+  if(req.body.username.length < max && req.body.password.length < max){
+    const newUser = new user(req.body.username, req.body.password); //lager en ny user, med brukernavn og passord som clienten har sendt inn
+    statusCode = await newUser.create(); //returnerer en http statuskode
+  }else{
+    statusCode = 403;
+  }
 
   //her sjekker den hvilken statuskode som ble returnert, slik at resp kan få riktig verdi
   switch(statusCode){
@@ -24,6 +31,9 @@ server.post("/user", async function (req, res){
       break;
     case 401:
       resp.response = "Username is already taken!";
+      break;
+    case 403:
+      resp.response = `Username or password is exceeding ${max} characters`;
       break;
     default:
       statusCode = 400;
