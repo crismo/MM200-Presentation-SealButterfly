@@ -14,20 +14,20 @@ server.use(bodyParser.json());
 //når clientet fetcher med post /user kommer man hit
 server.post("/user", async function (req, res){
   const newUser = new user(req.body.username, req.body.password); //lager en ny user, med brukernavn og passord som clienten har sendt inn
-  const statusCode = await newUser.create(); //returnerer en http statuskode
-  let resp = "";
+  let statusCode = await newUser.create(); //returnerer en http statuskode
+  const resp = {};
 
   //her sjekker den hvilken statuskode som ble returnert, slik at resp kan få riktig verdi
   switch(statusCode){
     case 200:
-      resp = "User created!";
+      resp.response = "User created!";
       break;
     case 401:
-      resp = "Username is already taken!";
+      resp.response = "Username is already taken!";
       break;
     default:
-      checkUser = 400;
-      resp = "Something went wrong!";
+      statusCode = 400;
+      resp.response = "Something went wrong!";
       break;
   }
 
@@ -40,27 +40,27 @@ server.post("/user", async function (req, res){
 //når clientet fetcher med get /user kommer man hit
 server.get("/user", async function (req, res){
   //kryptert brukernavn og passord blir sendt inn hit fra index.html
-  let checkUser = await authenticator(req); //returnerer en http statuskode
+  const checkUser = await authenticator(req); //returnerer en http statuskode
   //console.log(checkUser.status)
-  let resp = "";
-  const status = checkUser.status;
+  const resp = {};
+  let status = checkUser.status;
   const token = checkUser.token;
 
   //her sjekker den hvilken statuskode som ble returnert, slik at resp kan få riktig verdi
   switch(status){
     case 200:
-      const msg = "Login successful";
-      resp = {"response": msg, "token": token}
+      resp.response = "Login successful";
+      resp.token = token;
       break;
     case 401:
-      resp = "Password or username is incorrect";
+      resp.response = "Password or username is incorrect";
       break;
     case 403:
-      resp = "Forbidden!";
+      resp.response = "Forbidden!";
       break;
     default:
-      checkUser = 400;
-      resp = "Something went wrong!";
+      status = 400;
+      resp.response = "Something went wrong!";
       break;
   }
   
