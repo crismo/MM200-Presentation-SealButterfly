@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Client</title>
+    <link rel="stylesheet" href="userIndex.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+<body>
+
+    <img id="logo" src= "../pictures/logo.png">
+
+    <div id="account">
+        <div class ="logOut">Log out</div>
+    </div>
+
+    <div class="w3-bar w3-white">
+        <button class="w3-bar-item w3-button" onclick="openTab('createTab')">Create Slides</button>
+        <button class="w3-bar-item w3-button" onclick="openTab('privateTab')">Private Slides</button>
+        <button class="w3-bar-item w3-button" onclick="openTab('myPublicTab')">Your Public Slides</button>
+        <button class="w3-bar-item w3-button" onclick="openTab('publicTab')">Public Slides</button>
+      </div>
+
+    <div id="createTab" class="w3-container w3-white tab">
+        <h2>Create new slideshow</h2>
+        <p>Here you can create a new slideshow from these templates:</p>
+      </div>
+      
+      <div id="privateTab" class="w3-container w3-white tab" style="display:none">
+        <h2>My private slideshows</h2>
+        <p>Here you will find your private slideshows.</p>
+      </div>
+      
+      <div id="myPublicTab" class="w3-container w3-white tab" style="display:none">
+        <h2>My public slideshows</h2>
+        <p>Here you will find your public slideshows.</p>
+      </div>
+
+      <div id="publicTab" class="w3-container w3-white tab" style="display:none">
+        <h2>Public slideshows</h2>
+        <p>Here are other users public slideshows.</p>
+      </div>
+
+
+
+<script>
+
+
+function openTab(tabName) {
+  var i;
+  var x = document.getElementsByClassName("tab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(tabName).style.display = "block";
+}
+
+
+
+
+
+    
+</script>
+
+
+</body>

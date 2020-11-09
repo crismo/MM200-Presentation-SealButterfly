@@ -6,9 +6,12 @@ const {
 const secureEndpoints = require("./modules/secureEndpoints")
 const user = require("./modules/user");
 const hemmelig = require('./modules/secureEndpoints');
+const authenticator = require("./modules/auth");
 
 const server = express();
 const port = (process.env.PORT || 8080);
+
+const fs = require("fs");
 
 
 server.set('port', port);
@@ -24,12 +27,26 @@ server.post("/user", async function (req, res) {
   res.status(200).json(newUser).end();
 });
 
-server.get("/authenticate", hemmelig, (req, res) => {
+server.get("/authenticate", hemmelig, async (req, res) => {
     
-    
-    res.status(200).json("1").end();
+    res.redirect("/secure/userIndex.html");
 
 });
+
+
+/*server.get("/secure/*", async function (req, res) {
+
+    let isValid = false;
+
+    if(isValid === true){
+        res.redirect("/secure/userIndex.html");
+    }else{
+        res.redirect("/");
+    }
+
+    
+
+})*/
 
 server.listen(server.get('port'), function () {
   console.log('server running', server.get('port'));

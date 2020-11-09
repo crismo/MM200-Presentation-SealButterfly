@@ -24,6 +24,15 @@ class User {
         }
     }
 
+    async login(){
+        try{
+            let resp = await database.loginUser(this.username, this.password);
+            return resp;
+        }catch(err){
+            console.log(err);
+        }
+    }
+
 }
 
 

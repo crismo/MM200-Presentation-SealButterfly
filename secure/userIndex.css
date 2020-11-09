@@ -1,0 +1,32 @@
+*{
+    font-size: 20px;
+    font-family: sans-serif;
+    
+}
+
+#logo{
+   margin-left: 43%;
+   margin-top: 2%;
+   margin-bottom: 1%;
+}
+
+body{
+    background-image: url("../pictures/LandingPageBackground.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
+
+.logOut{
+    border: 1px solid #000;
+    position: fixed;
+    left: 94%;
+    right: 1%;
+    top: 10%;
+
+}
+
+#account {
+    background-position-x: right;
+    
+}

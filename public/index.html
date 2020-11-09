@@ -22,12 +22,12 @@
 
 
     <div class="w3-row">
-        <div class="w3-col xl4 l4 m4 ">
+        <div class="w3-col l4">
             <p class="w3-show">
                 I am hidden.
             </p>
         </div>
-        <div class="w3-col xl2 l2 m2 w3-center">
+        <div class="w3-col l2 m6 s6 w3-center">
             <form id="loginform" class="login-form center">
                 <div class="form-title">
                     <h2>Login</h2>
@@ -37,7 +37,7 @@
                 <button id="subLogin" class="red" type="submit">Login</button>
             </form>
         </div>
-        <div class="w3-col xl2 l2 m2 w3-center">
+        <div class="w3-col l2 s6 m6 w3-center">
             <form id="createform" class="create-form center">
                 <div class="form-title">
                     <h2>Create Account</h2>
@@ -48,7 +48,7 @@
                 <button id="subAcc" class="red" type="submit">Create account</button>
             </form>
         </div>
-        <div class="w3-col xl4 l4 m4">
+        <div class="w3-col l4">
             <p class="w3-show">
                 I am hidden.
             </p>
@@ -78,8 +78,8 @@
 
         if(loginUsername !== "" && loginPsw !== ""){
 
-        let username = loginUsername
-        let password = loginPsw
+        let username = loginUsername;
+        let password = loginPsw;
 
        
 
@@ -100,14 +100,15 @@
         });*/
 
         const response = await fetch("/authenticate", config);
-        const data = await response.json();
-        serverResp(response, data, 1); //sender response og data til funksjonen 1 = login
+        location.href = "/authenticate";
+        //const data = await response.json();
+        //serverResp(response, data, 1); //sender response og data til funksjonen 1 = login
 
     }else{
         // p shows up with text info
-        const infoDiv = document.getElementById("info");
-        infoDiv.innerHTML = "Invalid username or password";
-        document.body.appendChild(infoDiv);
+        //const infoDiv = document.getElementById("info");
+        //infoDiv.innerHTML = "Invalid username or password";
+        //document.body.appendChild(infoDiv);
     }
 
     })
@@ -149,8 +150,8 @@
             });*/
 
             const response = await fetch("/user", config);
-            const data = await response.json();
-            serverResp(response, data, 2); //sender response og data til funksjonen 2 = createUser
+            //const data = await response.json();
+            //serverResp(response, data, 2); //sender response og data til funksjonen 2 = createUser
 
         }else{
             // p shows up with text info2
@@ -162,9 +163,9 @@
         }
     }else{
         // p shows up with text info2
-        const infoDiv = document.getElementById("info2");
-        infoDiv.innerHTML = "Invalid username or password";
-        document.body.appendChild(infoDiv);
+        //const infoDiv = document.getElementById("info2");
+        //infoDiv.innerHTML = "Invalid username or password";
+        //document.body.appendChild(infoDiv);
     }
 
 

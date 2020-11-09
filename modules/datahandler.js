@@ -31,7 +31,7 @@ class StorageHandler {
 
     async loginUser(username, password){
         const client = new pg.Client(this.credentials);
-        let isValid = false;
+        let resp = {};
         let results = null;
 
         try{
@@ -41,11 +41,13 @@ class StorageHandler {
         results = await client.query("SELECT password FROM users WHERE username=$1 AND password=$2", [username, password]);
         if(results.rows[0] !== undefined){
 
-            isValid = true;
+            resp.isValid = true;
+            resp.username = username;
 
         }else{
-            isValid = false;
+            resp.isValid = false;
         }
+
         client.end();
 
         }catch(err){
@@ -53,7 +55,7 @@ class StorageHandler {
             //results = err;
         }
 
-        return isValid;  
+        return resp;
         
     }
 
