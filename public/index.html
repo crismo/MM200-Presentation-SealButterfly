@@ -1,59 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 </head>
+
 <body>
 
-    <img id="logo" src= "./pictures/logo.png">
 
-    <form id="loginform">
-        <h1>Login</h1>
-        <label id="loginUserLab" for="loginUsername">Username: </label>
-        <br>
-        <input name="Username" id="loginUsername" type="text" value="test" />
+    <div class="w3-row-padding">
+        <div class="w3-col s12 w3-center">
+            <img class="w3-image" src="./pictures/logo.png" alt="Logo">
+        </div>
+    </div>
 
-        <label id="loginPswLab" for="loginPsw">Password: </label>
-        <br>
-        <input name="psw" id="loginPsw" type="password" value="aaa" />
 
-        
-        <input id="subLogin" type="submit" value="Login">
 
-    </form>
+    <div class="w3-row-padding">
+        <div class="w3-col s6 l4  w3-center">
+            <form id="loginform" class="login-form center">
+                <div class="form-title">
+                    <h2>Login</h2>
+                </div>
+                <label><input id="loginUsername" type="text" placeholder="Username" name="name"> </label>
+                <label><input id="loginPsw" type="password" placeholder="Password" name="password"></label>
+                <button id="subLogin" class="red" type="submit">Login</button>
+            </form>
+        </div>
+        <div class="w3-col s6 l4  w3-center">
+            <form id="createform" class="create-form center">
+                <div class="form-title">
+                    <h2>Create Account</h2>
+                </div>
+                <label><input id="createUsername" type="text" placeholder="Username" name="name"> </label>
+                <label><input id="createPsw" type="password" placeholder="Password" name="password"></label>
+                <label><input id="createPswConf" type="password" placeholder="Confirm Password" name="passwordConf"></label>
+                <button id="subAcc" class="red" type="submit">Create account</button>
+            </form>
+        </div>
+    </div>
 
-    <p id="info"></p>
 
-     
 
-    
-    
-    <form id="createform">
-        <h1>Create Account</h1>
-        <label id="createUsernameLab" for="createUsername">Username: </label>
-        <br>
-        <input name="Username" id="createUsername" type="text" value="test" />
-
-        <label id="createPswLab" for="createPsw">Password: </label>
-        <br>
-        <input name="psw" id="createPsw" type="password" value="aaa" />
-
-        <label id="createPasswordConfLab" for="createPswConf">Confirm Password: </label>
-        <br>
-        <input name="psw" id="createPswConf" type="password" value="aaa" />
-
-        <input id="subAcc" type="submit" value="Create Account">
-     
-    </form>
-
-    <p id="info2"></p>
-
-    
 </body>
-
 
 
 <script>    
@@ -106,7 +100,8 @@
         document.body.appendChild(infoDiv);
     }
 
-    });
+    })
+
     
     //
 
@@ -168,11 +163,10 @@
     //
 
     function serverResp(res, data, num){
-        console.log(res.status); //skriver ut status i console, feks 200, 401
-        console.log(data.response); //skriver ut responsen, feks "login successful"
-
+        console.log(res.status);
+        console.log(data.response)
         if(data.token){
-            //console.log(data.token);
+            console.log(data.token);
             localStorage.setItem("token", data.token);
         }
         //
@@ -180,10 +174,10 @@
         //sjekker om num 1 = login eller om num 2 = createUser, for å gi brukeren beskjed i riktig div
         switch(num){
             case 1:
-                document.getElementById("info").innerHTML = data.response;
+                //document.getElementById("info").innerHTML = data.response;
                 break;
             case 2:
-                document.getElementById("info2").innerHTML = data.response;
+                //document.getElementById("info2").innerHTML = data.response;
         }
     }
 
@@ -191,5 +185,3 @@
     
     
 </script>
-
-</html>

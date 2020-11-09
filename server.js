@@ -56,6 +56,8 @@ server.get("/user", async function (req, res){
   let status = checkUser.status;
   const token = checkUser.token;
 
+  let JSONuser = {"username": }
+
   //her sjekker den hvilken statuskode som ble returnert, slik at resp kan få riktig verdi
   switch(status){
     case 200:
