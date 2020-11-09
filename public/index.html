@@ -21,8 +21,13 @@
 
 
 
-    <div class="w3-row-padding">
-        <div class="w3-col s6 l4  w3-center">
+    <div class="w3-row">
+        <div class="w3-col xl4 l4 m4 ">
+            <p class="w3-show">
+                I am hidden.
+            </p>
+        </div>
+        <div class="w3-col xl2 l2 m2 w3-center">
             <form id="loginform" class="login-form center">
                 <div class="form-title">
                     <h2>Login</h2>
@@ -32,7 +37,7 @@
                 <button id="subLogin" class="red" type="submit">Login</button>
             </form>
         </div>
-        <div class="w3-col s6 l4  w3-center">
+        <div class="w3-col xl2 l2 m2 w3-center">
             <form id="createform" class="create-form center">
                 <div class="form-title">
                     <h2>Create Account</h2>
@@ -42,6 +47,11 @@
                 <label><input id="createPswConf" type="password" placeholder="Confirm Password" name="passwordConf"></label>
                 <button id="subAcc" class="red" type="submit">Create account</button>
             </form>
+        </div>
+        <div class="w3-col xl4 l4 m4">
+            <p class="w3-show">
+                I am hidden.
+            </p>
         </div>
     </div>
 
@@ -89,7 +99,7 @@
             redirect(resp);
         });*/
 
-        const response = await fetch("/user", config);
+        const response = await fetch("/authenticate", config);
         const data = await response.json();
         serverResp(response, data, 1); //sender response og data til funksjonen 1 = login
 
@@ -164,7 +174,7 @@
 
     function serverResp(res, data, num){
         console.log(res.status);
-        console.log(data.response)
+        //console.log(data.response)
         if(data.token){
             console.log(data.token);
             localStorage.setItem("token", data.token);

@@ -12,6 +12,10 @@ h1{
     height: 10vh;
 }
 
+p{
+    opacity: 0;
+}
+
 
 body{
     background-image: url("./pictures/LandingPageBackground.png");

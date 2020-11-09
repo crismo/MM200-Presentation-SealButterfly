@@ -1,5 +1,4 @@
 const pg = require("pg");
-const sbT = require("./sbToken");
 const dbCredentials = process.env.DATABASE_URL || require("../localenv").credentials;
 
 class StorageHandler {
@@ -13,94 +12,68 @@ class StorageHandler {
         };
     }
 
-    async insertUser(username, password){
+    async insertUser(username, password) {
         const client = new pg.Client(this.credentials);
         let results = null;
-        
         try {
             await client.connect();
-            results = await client.query('SELECT username from "users" where username=$1', [username]);
-            
-            const nameCheck = results.rows.find(element => element = username);
-            
-            if(nameCheck !== undefined){
-                results = 401; //Username is already taken!, 401
-                client.end();
-                return results;
-            }else{
-                results = await client.query('INSERT INTO "public"."users"("username", "password") VALUES($1, $2) RETURNING *;', [username, password]);
-                //results = results.rows[0];
-                //console.log(results);
-                results = 200; //User created!, 200
-                client.end();
-                return results;
-            }
-            
-        }catch(err){
+            results = await client.query('INSERT INTO "public"."users"("username", "password") VALUES($1, $2) RETURNING *;', [username, password]);
+            results = results.rows[0].message;
+            client.end();
+        } catch (err) {
             client.end();
             console.log(err);
+            results = err;
         }
 
-        return 403;
+        return results;
     }
 
     async loginUser(username, password){
         const client = new pg.Client(this.credentials);
+        let isValid = false;
         let results = null;
 
         try{
+
+        await client.connect();
             
-            await client.connect();
-            
-            results = await client.query("SELECT password FROM users WHERE username=$1 AND password=$2", [username, password]);
-            if(results.rows[0] !== undefined){
-                
-                if(password === results.rows[0].password){
+        results = await client.query("SELECT password FROM users WHERE username=$1 AND password=$2", [username, password]);
+        if(results.rows[0] !== undefined){
 
-                    //const idResults = await client.query('SELECT id from "users" where username=$1', [username]);
-                    //const payload = {id: idResults.rows[0].id};//{id: result[0].id};
-                    //const secret = "JosteinNordengen";
+            isValid = true;
 
+        }else{
+            isValid = false;
+        }
+        client.end();
 
-                    //const token = tokenGenerator(username);
-                    const newToken = new sbT();
-                    const token = await newToken.createAndEncryptToken(username);
-                    console.log(token);
-
-                    /*
-                    const newTxtToken = new sbT();
-                    const tokenTxt = await newTxtToken.decryptToken(token);
-                    console.log(tokenTxt);
-                    */
-
-                    results = {"status": 200, "token": token}; //login successful, 200
-
-                    //console.log(results.token)
-                    client.end();
-                    return results;
-
-                }else{
-
-                    results.status = 401; //Password or username is incorrect, 401 unauthorized
-                    client.end();
-                    return results;
-                    
-                }
-                
-            }else{
-                results.status = 401; //Password or username is incorrect, 401 unauthorized
-                client.end();
-                return results;
-            }
-            
         }catch(err){
-            client.end();
             console.log(err);
+            //results = err;
         }
 
+        return isValid;  
+        
     }
 
-    
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
+    async insert(...params) {
+        const client = new pg.Client(this.credentials);
+        let results = null;
+        try {
+            await client.connect();
+            results = await client.query('INSERT INTO "public"."$1"("username", "password") VALUES($2, $3) RETURNING *;', params);
+            results = results.rows[0].message;
+            client.end();
+        } catch (err) {
+            client.end();
+            results = err;
+        }
+
+        return results;
+    }
+
 
 }
 
