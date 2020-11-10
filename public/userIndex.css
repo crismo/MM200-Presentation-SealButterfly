@@ -17,16 +17,4 @@ body{
     background-position: center; 
 }
 
-.logOut{
-    border: 1px solid #000;
-    position: fixed;
-    left: 94%;
-    right: 1%;
-    top: 10%;
 
-}
-
-#account {
-    background-position-x: right;
-    
-}

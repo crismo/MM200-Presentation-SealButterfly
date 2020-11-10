@@ -12,8 +12,12 @@
 
     <img id="logo" src= "./pictures/logo.png">
 
-    <div id="account">
-        <button class ="logOut">Log out</button>
+    <div class="w3-dropdown-click w3-right">
+      <button onclick="myAccount()" class="w3-button w3-white">Account</button>
+      <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+        <a href="#" class="w3-bar-item w3-button">Log out</a>
+        <a href="#" class="w3-bar-item w3-button">Delete account</a>
+      </div>
     </div>
 
     <div class="w3-bar w3-white">
@@ -58,7 +62,14 @@ function openTab(tabName) {
 }
 
 
-
+function myAccount() {
+  var x = document.getElementById("Demo");
+  if (x.className.indexOf("w3-show") == -1) { 
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
 
 
     
