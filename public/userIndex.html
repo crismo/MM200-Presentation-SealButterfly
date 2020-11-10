@@ -28,7 +28,8 @@
       </div>
 
     <div id="createTab" class="w3-container w3-white tab">
-        <h2>Create new slideshow</h2>
+      <button id="createNew">Create new slideshow</button>
+      <input id="presentationName">
         <p>Here you can create a new slideshow from these templates:</p>
       </div>
       
@@ -71,7 +72,30 @@ function myAccount() {
   }
 }
 
+//create new presentation
 
+const createNewBtn = document.getElementById("createNew");
+
+createNewBtn.addEventListener("click", async function(evt) {
+
+  const newPresentation = document.getElementById("presentationName").value;
+
+
+  let body = {
+                presentation: newPresentation,
+            }
+            let config = {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(body)
+            }
+
+            const response = await fetch("/presentation", config);
+});
+
+//
     
 </script>
 
