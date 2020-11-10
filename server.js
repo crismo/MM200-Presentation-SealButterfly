@@ -3,22 +3,20 @@ const bodyParser = require('body-parser');
 const {
   Router
 } = require('express');
-const secureEndpoints = require("./modules/secureEndpoints")
+const secureEndpoints = require("./modules/secureEndpoints");
 const user = require("./modules/user");
+const presentation = require("./modules/presentation");
 const hemmelig = require('./modules/secureEndpoints');
-const authenticator = require("./modules/auth");
 
 const server = express();
 const port = (process.env.PORT || 8080);
-
-const fs = require("fs");
 
 
 server.set('port', port);
 server.use(express.static('public'));
 server.use(bodyParser.json());
 // https://expressjs.com/en/guide/routing.html
-server.use("/secure", secureEndpoints);
+//server.use("/secure", secureEndpoints);
 
 
 server.post("/user", async function (req, res) {
@@ -36,6 +34,15 @@ server.get("/authenticate", hemmelig, async (req, res) => {
     res.redirect("/userIndex.html");
 
 });
+
+server.post("/presentation", async function (req, res) {
+
+  const newPres = new presentation(req.body.presentation);
+  await newPres.create();
+  res.status(200).json(newPres).end();
+});
+
+server.post("/presentation/*")
 
 
 /*server.get("/secure/*", async function (req, res) {
