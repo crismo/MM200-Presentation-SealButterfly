@@ -27,9 +27,7 @@ server.post("/user", async function (req, res) {
   res.status(200).json(newUser).end();
 });
 
-server.post("/authenticate", hemmelig, async (req, res) => {
-
-    await authenticator(req);
+server.get("/authenticate", hemmelig, async (req, res) => {
 
     
 
