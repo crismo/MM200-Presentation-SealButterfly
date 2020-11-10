@@ -28,8 +28,10 @@ server.post("/user", async function (req, res) {
 });
 
 server.get("/authenticate", hemmelig, async (req, res) => {
+
+    //console.log(req.headers.authorization);
     
-    res.redirect("/secure/userIndex.html");
+    res.redirect("/userIndex.html");
 
 });
 

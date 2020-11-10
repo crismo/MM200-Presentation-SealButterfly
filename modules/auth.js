@@ -22,7 +22,7 @@ async function authenticate(username, password) {
     const loginUser = new user(username, password);
 
     const resp = await loginUser.login();
-    console.log(resp)
+    console.log(resp);
     //console.log(resp); // true/false
     return resp;
 }
