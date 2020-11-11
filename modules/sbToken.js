@@ -1,6 +1,6 @@
 const user = requier("./user.js");
 const crypto = require('crypto');
-const secret = process.env.hashSecret || require("../localenv").tokenSecret;
+const secret = process.env.tokenSecret || require("../localenv").tokenSecret;
 
 function createToken(user){
   
