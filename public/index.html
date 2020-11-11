@@ -100,12 +100,7 @@
             }
         }
 
-        /*fetch("/user", config).then(resp => {
-            redirect(resp);
-        });*/
-
         const response = await fetch("/authenticate", config);
-        //location.href = "/authenticate";
         //const data = await response.json();
         //serverResp(response, data, 1); //sender response og data til funksjonen 1 = login
 
@@ -149,10 +144,6 @@
                 },
                 body: JSON.stringify(body)
             }
-
-            /*fetch("/user", config).then(resp => {
-                redirect(resp);
-            });*/
 
             const response = await fetch("/user", config);
             //const data = await response.json();
