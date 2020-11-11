@@ -13,7 +13,8 @@ class User {
         this.password = crypto.createHmac('sha256', secret)
             .update(password)
             .digest('hex');
-        this.valid = false
+        this.isValid = false;
+        this.email = null;
     }
 
     async create() {
@@ -23,14 +24,30 @@ class User {
             console.error(error)
         }
     }
+  
+  async update(){
+  
+  }
 
-    async login(){
-        try{
+  async delete(){
+    //??? Vanskelig :) pga politikk. 
+  }
+
+    async validate(){
+      let success = false;
+      try{
             let resp = await database.loginUser(this.username, this.password);
-            return resp;
+
+            if(resp != null){
+              this.isValid = true;
+              sucess = true
+              // Her kan vi populere andre felter i user objektet
+              // Eks this.email = resp.email (eller lignende)
+            }
         }catch(err){
             console.log(err);
         }
+      return success;
     }
 
 }
