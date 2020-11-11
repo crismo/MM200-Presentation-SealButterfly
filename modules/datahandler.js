@@ -29,34 +29,19 @@ class StorageHandler {
         return results;
     }
 
-    async loginUser(username, password){
+    async selectUser(username, password){
         const client = new pg.Client(this.credentials);
-        let resp = {};
-        let results = null;
-
+        let resp = null;
         try{
-
-        await client.connect();
-            
-        results = await client.query("SELECT password FROM users WHERE username=$1 AND password=$2", [username, password]);
-        if(results.rows[0] !== undefined){
-
-            resp.isValid = true;
-            resp.username = username;
-
-        }else{
-            resp.isValid = false;
-        }
-
-        client.end();
-
+            await client.connect();
+            let results = await client.query('SELECT * FROM "public"."users" WHERE username=$1 AND password=$2', [username, password]);
+            resp =  (results.rows.length > 0) ? results.rows[0]:null;
+            client.end();
         }catch(err){
             console.log(err);
-            //results = err;
         }
 
-        return resp;
-        
+        return resp;        
     }
 
     //presentations
