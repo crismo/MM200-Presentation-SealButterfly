@@ -1,37 +1,49 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const {
-  Router
-} = require('express');
-const secureEndpoints = require("./modules/secureEndpoints");
 const user = require("./modules/user");
-const presentation = require("./modules/presentation");
-const hemmelig = require('./modules/secureEndpoints');
+const auth = require("./modules/auth");
+
+const createToken = require("./modules/sbToken").create;
 
 const server = express();
 const port = (process.env.PORT || 8080);
-
-
 server.set('port', port);
 server.use(express.static('public'));
 server.use(bodyParser.json());
-// https://expressjs.com/en/guide/routing.html
-//server.use("/secure", secureEndpoints);
 
 
+// create new user
 server.post("/user", async function (req, res) {
   const newUser = new user(req.body.username, req.body.password);
   await newUser.create();
+  // Hva om databasen feilet?
+  // Hva om det var en bruker med samme brukernavn?
   res.status(200).json(newUser).end();
 });
 
-server.get("/authenticate", hemmelig, async (req, res) => {
+server.post("/authenticate", async (req, res) => {
+  
+  let requestUser = new user(req.body.username, req.body.password); // Hvem prøver å logge inn?
+  let isValid = requestUser.validate(); // Finnes vedkommende i DB og er det riktig passord?
+  
+  if(isValid){
+    let sessionToken = createToken(requestUser);
+    res.status(200).json({"authToken":sessionToken}).end();
+  } else {
+    res.status(403).end(); 
+  }
+  
+});
 
-    
+//!!!! WARNING DEMO !!! 
+server.get("/user/presentation/:id",auth, function (req, res) {
 
-    //console.log(req.headers.authorization);
+    // Bruker spør om presentasjon med id.
+    // Tilhører den presentasjonen denne brukeren?
+    // if(req.user.id = presenteasjon.author){}
+    // req.user kommer fra auth. 
     
-    res.redirect("/userIndex.html");
+    // Retuner json for presentasjon. 
 
 });
 
